@@ -1,0 +1,44 @@
+{% extends 'TaxiLegionBundle::base.html.twig' %}
+
+{% block title %}Пользователи{% endblock %}
+
+{% block nav %}
+   {{ knp_menu_render('TaxiLegionBundle:Builder:adminMenu',{'template': 'TaxiLegionBundle:Menu:knp_menu.html.twig'}) }}
+ {% endblock %}
+
+{% block body %}
+    <div class="section-option">
+        <a href="{{ path('taxi_legion_users_create') }}" class="btn btn-primary">
+            <span class="glyphicon glyphicon-plus-sign"></span> Создать пользователя</a>
+    </div>
+    <div class="section-option">
+        <div class="panel panel-primary">
+            <div class="panel-heading">Список пользователей <span class="label label-info app-label pull-right">{{ users|length }}</span></div>
+            {% if users %}
+                <table class="table table-striped">
+                    <tr>
+                        <th>#</th>
+                        <th>ФИО</th>
+                        <th>Последняя авторизация</th>
+                        <th>Опции</th>
+                    </tr>
+                {% for user in users %}
+                    <tr>
+                        <td>{{ loop.index }}</td>
+                        <td>{{ user.email }}</td>
+                        <td>{% if user.lastLogin %} {{ user.lastLogin.date|date('d.m.Y в H:i:s') }} {% endif %}</td>
+                        <td>
+                            <a href="{{ path('taxi_legion_user_edit', {'id': user.id }) }}" class="btn btn-warning btn-sm">
+                                <span class="glyphicon glyphicon-edit"></span> Редактировать</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </table>
+            {% else %}
+                <div class="panel-body">
+                    <span>Нет пользователей</span>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends 'TaxiLegionBundle::base.html.twig' %}
+
+{% block title %}Типы заявок{% endblock %}
+
+{% block nav %}
+    {{ knp_menu_render('TaxiLegionBundle:Builder:adminMenu',{'template': 'TaxiLegionBundle:Menu:knp_menu.html.twig'}) }}
+{% endblock %}
+
+{% block body %}
+    <div class="section-option">
+        <a href="{{ path('taxi_legion_type_order_create') }}" class="btn btn-primary">
+            <span class="glyphicon glyphicon-plus-sign"></span> Создать тип заявки</a>
+    </div>
+    <div class="section-option">
+        <div class="panel panel-primary">
+            <div class="panel-heading">Список типов заявок <span class="label label-info app-label pull-right">{{ type|length }}</span></div>
+            {% if type %}
+                <table class="table table-striped">
+                    <tr>
+                        <th>#</th>
+                        <th>Название</th>
+                        <th>Наценка (руб.)</th>
+                        <th>Опции</th>
+                    </tr>
+                    {% for item in type %}
+                        <tr>
+                            <td>{{ loop.index }}</td>
+                            <td>{{ item.name }}</td>
+                            <td>{{ item.adjustment }}</td>
+                            <td><a href="{{ path('taxi_legion_type_order_edit', {'id': item.id }) }}" class="btn btn-warning btn-sm">
+                                    <span class="glyphicon glyphicon-edit"></span> Редактировать</a></td>
+                        </tr>
+                    {% endfor %}
+                </table>
+            {% else %}
+                <div class="panel-body">
+                    <span>Нет типов</span>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

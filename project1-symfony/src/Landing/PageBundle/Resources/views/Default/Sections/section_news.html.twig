@@ -1,0 +1,17 @@
+{% if news is defined %}
+<section class="row-section" id="news">
+    <div class="container-fluid landing-section{% if news.getTotalItemCount > 10 %} section-pagination{% endif %}">
+        <h2>Новости</h2>
+        <div class="news-load">
+        {% for item in news %}
+            <div class="item item-new clearfix">
+                <div class="new-date-public pull-left text-center">{{ item.date.date|date('d.m.Y') }}</div>
+                <div class="new-title"><a class="show-modal-content prevent-default" href="#" data-id="{{ item.id }}" data-action="news">{{ item.title|raw }}</a></div>
+            </div>
+        {% endfor %}
+        </div>
+        {{ knp_pagination_render(news, 'LandingPageBundle:Pagination:news_pagination.html.twig') }}
+        
+    </div>
+</section>
+{% endif %}

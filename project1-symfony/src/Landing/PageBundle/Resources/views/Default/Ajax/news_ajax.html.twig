@@ -1,0 +1,6 @@
+{% for item in news %}
+  <div class="item item-new clearfix">
+      <div class="new-date-public pull-left text-center">{{ item.date.date|date('d.m.Y') }}</div>
+      <div class="new-title"><a class="show-modal-content prevent-default" href="#" data-id="{{ item.id }}" data-action="news">{{ item.title|raw }}</a></div>
+  </div>
+{% endfor %}

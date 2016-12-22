@@ -1,0 +1,48 @@
+{% extends 'TaxiLegionBundle::base.html.twig' %}
+
+{% block title %}Тарифы{% endblock %}
+
+{% block nav %}
+    {{ knp_menu_render('TaxiLegionBundle:Builder:adminMenu',{'template': 'TaxiLegionBundle:Menu:knp_menu.html.twig'}) }}
+{% endblock %}
+
+{% block body %}
+    <div class="section-option">
+        <a href="{{ path('taxi_legion_tariff_create') }}" class="btn btn-primary">
+            <span class="glyphicon glyphicon-plus-sign"></span> Создать тариф</a>
+    </div>
+    <div class="section-option">
+        <div class="panel panel-primary">
+            <div class="panel-heading">Список тарифов <span class="label label-info app-label pull-right">{{ tariffs|length }}</span></div>
+            {% if tariffs %}
+                <table class="table table-striped">
+                    <tr>
+                        <th>#</th>
+                        <th>Название</th>
+                        <th>Цена за 1 км</th>
+                        <th>Цена за 1 мин. простоя</th>
+                        <th>Цена за перегруз</th>
+                        <th>Старт счетчика</th>
+                        <th>Опции</th>
+                    </tr>
+                    {% for item in tariffs %}
+                        <tr>
+                            <td>{{ loop.index }}</td>
+                            <td>{{ item.name }}</td>
+                            <td>{{ item.price }} р.</td>
+                            <td>{{ item.pricePending }} р.</td>
+                            <td>{{ item.priceOverdrive }} р.</td>
+                            <td>с {{ item.startCounter }} км</td>
+                            <td><a href="{{ path('taxi_legion_tariff_edit', {'id': item.id }) }}" class="btn btn-warning btn-sm">
+                                    <span class="glyphicon glyphicon-edit"></span> Редактировать</a></td>
+                        </tr>
+                    {% endfor %}
+                </table>
+            {% else %}
+                <div class="panel-body">
+                    <span>Нет тарифов</span>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

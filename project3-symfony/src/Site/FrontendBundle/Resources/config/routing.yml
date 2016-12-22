@@ -1,0 +1,19 @@
+site_frontend_homepage:
+    path:     /
+    defaults: { _controller: SiteFrontendBundle:Default:index }
+
+category:
+    path:     /рубрика/{slug}
+    defaults: { _controller: SiteFrontendBundle:Default:category }
+
+news_post:
+    path:     /новости/{slug}
+    defaults: { _controller: SiteFrontendBundle:Default:news_post }
+
+news:
+    path:     /новости
+    defaults: { _controller: SiteFrontendBundle:Default:news }
+
+news_category_post:
+    path:     /рубрика/{category_slug}/{slug}
+    defaults: { _controller: SiteFrontendBundle:Default:news_category_post }

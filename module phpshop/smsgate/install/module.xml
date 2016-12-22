@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<module>
+    <version>1.0</version>
+    <name>SMSGate</name>
+    <description>InCore Dev: SMS уведомления</description>
+     <faqlink></faqlink>
+    <category>sale</category>
+    <adminmenu>
+        <title>InCore Dev: SMS уведомления</title>
+        <capability>true</capability>
+        <podmenu>
+            <podmenu_name>Настройка</podmenu_name>
+            <podmenu_action>dir.smsgate</podmenu_action>
+        </podmenu>
+    </adminmenu>
+</module>

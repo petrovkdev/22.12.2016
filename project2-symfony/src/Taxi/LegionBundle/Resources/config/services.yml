@@ -1,0 +1,21 @@
+services:
+  taxi.user_manager:
+    class: Taxi\UserBundle\Doctrine\UserManager
+    arguments:
+      - @security.encoder_factory
+      - @fos_user.util.username_canonicalizer
+      - @fos_user.util.email_canonicalizer
+      - @fos_user.entity_manager
+      - %fos_user.model.user.class%
+
+  app.form.type.config:
+          class: Taxi\LegionBundle\Forms\ConfigForm
+          arguments: ["@doctrine.orm.entity_manager"]
+          tags:
+              - { name: form.type }
+
+  app.form.type.discount:
+            class: Taxi\LegionBundle\Forms\DiscountForm
+            arguments: ["@doctrine.orm.entity_manager"]
+            tags:
+                - { name: form.type }

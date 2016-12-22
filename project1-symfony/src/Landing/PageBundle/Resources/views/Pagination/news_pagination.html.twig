@@ -1,0 +1,27 @@
+{#
+/**
+ * @file
+ * Twitter Bootstrap v3 Sliding pagination control implementation.
+ *
+ * View that can be used with the pagination module
+ * from the Twitter Bootstrap CSS Toolkit
+ * http://getbootstrap.com/components/#pagination
+ *
+ * @author Pablo Díez <pablodip@gmail.com>
+ * @author Jan Sorgalla <jsorgalla@gmail.com>
+ * @author Artem Ponomarenko <imenem@inbox.ru>
+ * @author Artem Zabelin <artjomzabelin@gmail.com>
+ */
+#}
+
+{% if pageCount > 1 %}
+  <ul class="pagination">
+
+  {% for page in pagesInRange %}
+    <li {% if page == current %}class="active"{% endif %}>
+        <a href="#" class="prevent-default link-page" data-action="news_page" data-page="{{ page }}">{{ page }}</a>
+    </li>
+  {% endfor %}
+ 
+  </ul>
+{% endif %}

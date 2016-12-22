@@ -1,0 +1,81 @@
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+    <h4 class="modal-title">Расчет кредита</h4>
+</div>
+<div class="modal-body" id="credit-table-print">
+
+    <div class="media">
+        <div class="pull-left">
+            <img src="{{ asset(logo_path) }}" alt="{{ slogan }}">
+        </div>
+        <div class="media-body">
+            <h3 class="media-heading">{{ slogan }}</h3>
+        </div>
+    </div>
+
+    <ul class="list-group">
+        <li class="list-group-item">
+            Сумма кредита - {{ credit_sum|number_format('0', '', '&nbsp;')|raw }} рублей
+        </li>
+        <li class="list-group-item">
+            Процентная ставка - {{ credit_percent }}% годовых
+        </li>
+        <li class="list-group-item">
+            На срок - {{ credit_time }} мес.
+        </li>
+        <li class="list-group-item">
+            Ежемесячная сумма выплат - {{ sum_month|number_format('2', '.', '&nbsp;')|raw }} рублей
+        </li>
+        <li class="list-group-item">
+            Месяц выдачи кредита - {{ month|localizeddate('none', 'none', 'ru', null, 'LLLL Y') }} года
+        </li>
+        <li class="list-group-item">
+            Первый месяц взноса - {{ one_month_pay|localizeddate('none', 'none', 'ru', null, 'LLLL Y') }} года
+        </li>
+        <li class="list-group-item">
+            Сумма к возврату - {{ amount|number_format('2', '.', '&nbsp;')|raw }} рублей
+        </li>
+    </ul>
+
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>№</th>
+                    <th>Месяц</th>
+                    <th>Взнос</th>
+                    <th>Процент</th>
+                    <th>Основной долг</th>
+                    <th>Остаток</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in calculation %}
+                    <tr>
+                        <td>{{ loop.index }}</td>
+                        <td>{{ item.month|localizeddate('none', 'none', 'ru', null, 'LLLL Y') }}</td>
+                        <td>{{ item.contribution|number_format('2', '.', '&nbsp;')|raw }}</td>
+                        <td>{{ item.percent_pay|number_format('2', '.', '&nbsp;')|raw }}</td>
+                        <td>{{ item.debd|number_format('2', '.', '&nbsp;')|raw }}</td>
+                        <td>{{ item.rest|number_format('2', '.', '&nbsp;')|raw }}</td>
+                    </tr>
+                {% endfor %}
+                <tr>
+                    <td><b>Итого</b></td>
+                    <td></td>
+                    <td></td>
+                    <td><b>{{ full_sum_percent|number_format('2', '.', '&nbsp;')|raw }}</b></td>
+                    <td><b>{{ full_sum_credit|number_format('2', '.', '&nbsp;')|raw }}</b></td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="alert alert-info">
+        Расчеты носят справочный характер и зависят от индивидуальных параметров микрозайма.
+    </div>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
+    <button type="button" class="btn btn-success" id="btn-print" data-loading-text="Подождите...">Распечатать</button>
+</div>

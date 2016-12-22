@@ -1,0 +1,27 @@
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+    <h4 class="modal-title">{{ title|raw }}</h4>
+</div>
+<div class="modal-body" id="news-content">
+    {{ content|raw }}
+    
+    {% if gallery is defined %}
+        
+        <h3>{{ gallery_name }}</h3>
+        <div class="highslide-gallery clearfix" id="highslide-main">
+            {% for gm in gallery %}
+            <div class="pull-left highslide-item">
+                <a href="{% path gm.media, 'reference' %}" class="highslide" title="{{ gm.description }}" onclick="return hs.expand(this, config1)">
+                    <img src="{% path gm.media, 'default_gallery' %}" class="gm img-responsive" alt="">
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+        
+        
+    {% endif %}
+    
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
+</div>

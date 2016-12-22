@@ -1,0 +1,20 @@
+{% form_theme form 'TaxiLegionBundle:Form:bootstrap_3_layout.html.twig' %}
+{{ form_start(form) }}
+    <div class="form-group{% if form_errors(form.phone) %} has-error{% endif %}">
+        {{ form_label(form.phone) }}
+        <div class="input-group input-group-sm">
+            <span class="input-group-addon">+7</span>
+            {{ form_widget(form.phone) }}
+        </div>
+        {{ form_errors(form.phone) }}
+
+    </div>
+    {{ form_row(form.user) }}
+
+    <fieldset>
+        <legend>Адрес (куда доставить)</legend>
+        {{ form_row(form.streetSource) }}
+        {{ form_row(form.houseNumberSource) }}
+        {{ form_row(form.porchSource) }}
+    </fieldset>
+{{ form_end(form) }}

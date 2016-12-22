@@ -1,0 +1,62 @@
+{% extends 'SonataAdminBundle::standard_layout.html.twig' %}
+{% form_theme form_site 'SiteBackendBundle:Form:bootstrap_3_layout.html.twig' %}
+
+{% block sonata_head_title %}{{  parent() }} - Настройки сайта{% endblock %}
+
+{% block stylesheets %}
+    {{  parent() }}
+    <link rel="stylesheet" href="{{ asset('bundles/site/css/admin.css') }}" />
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+{% endblock %}
+
+
+{% block breadcrumb %}
+    <li><a href="{{ url('sonata_admin_dashboard') }}">{% trans %}Панель{% endtrans %}</a></li>
+    <li class="active"><span>Настройки сайта</span></li>
+{% endblock %}
+
+{% block side_bar_after_nav %}
+    {{ knp_menu_render('SiteBackendBundle:Builder:adminMenu') }}
+{% endblock %}
+
+{% block sonata_page_content_nav %}
+
+    <nav class="navbar navbar-default" role="navigation">
+        <div class="navbar-header">
+            <span class="navbar-brand">Настройки сайта</span>
+        </div>
+    </nav>
+{% endblock %}
+
+{% block sonata_admin_content %}
+    <form name="form_site" id="form-site" action="{{ path('site_settings') }}" method="post">
+        <div class="row">
+            <div class="sonata-ba-list col-md-12">
+                <div class="box box-primary">
+                    <div class="box-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <fieldset>
+                                    <legend>Реквизиты</legend>
+
+                                    {{ form_row(form_site.title) }}
+                                    {{ form_row(form_site.copy) }}
+                                    {{ form_row(form_site.address) }}
+                                    {{ form_row(form_site.phone) }}
+                                    {{ form_row(form_site.email) }}
+
+
+                                </fieldset>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="well well-small form-actions">
+            <button type="submit" class="btn btn-success" name="form[save]"><i class="fa fa-save"></i> Сохранить</button>
+        </div>
+        {{ form_widget(form_site._token) }}
+    </form>
+{% endblock %}

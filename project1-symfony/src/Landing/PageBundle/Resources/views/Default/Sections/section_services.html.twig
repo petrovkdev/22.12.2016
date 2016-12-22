@@ -1,0 +1,21 @@
+{% if services is defined %}
+    <section class="row-section" id="services">
+        <div class="container-fluid landing-section">
+            <h2>Услуги</h2>
+            <div id="list-services" class="text-center">
+                {% for item in services %}
+                    <div class="item show-modal-content" data-id="{{ item.id }}" data-action="services">
+                        <div class="thumbnail clearfix">
+                            <img src="{% path item.mediaId, 'reference' %}" class="pull-left">
+                            <div class="caption">
+                                <div class="app-table">
+                                    <h3>{{ item.name }}</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+{% endif %}

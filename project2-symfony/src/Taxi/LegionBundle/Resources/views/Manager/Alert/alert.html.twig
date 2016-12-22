@@ -1,0 +1,8 @@
+<div class="alert {{ type_alert }} alert-dismissable fade in">
+    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+    <ul>
+        {% for row in text_alert %}
+        <li>{{ row }}</li>
+        {% endfor %}
+    </ul>
+</div>

@@ -1,0 +1,6 @@
+{% extends 'SonataAdminBundle:Core:user_block.html.twig' %}
+{% block user_block %}
+    <li role="presentation" class="dropdown-header">Администратор</li>
+    <li role="presentation"><a role="menuitem" tabindex="-1" href="{{ path('user_edit', {'id':1}) }}">Редактировать</a></li>
+    <li role="presentation"><a role="menuitem" tabindex="-1" href="{{ path('logout') }}">Выход</a></li>
+{% endblock %}

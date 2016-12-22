@@ -1,0 +1,92 @@
+.left-menu-admin {
+    border-top:1px solid #444;
+}
+
+.left-menu-admin a, .left-menu-admin span {
+    padding: 10px;
+    display: block;
+    color: #eee;
+}
+
+.left-menu-admin a:hover {
+    background: #222;
+}
+
+.left-menu-admin li {
+    border-bottom:1px solid #444;
+}
+
+.menu_level_1 {
+    padding: 0;
+}
+
+.menu_level_1 li {
+    border-bottom: 0;
+    border-top: 1px solid #444;
+}
+
+.left-menu-admin .menu_level_1 a {
+    padding-left: 30px;
+}
+
+.left-menu-admin span {
+    text-transform: uppercase;
+}
+
+.left-menu-admin .current a {
+    color: #fff;
+    background: #008D4C;
+}
+
+.icheckbox_minimal {
+    top: -4px;
+}
+
+#addphone {
+    background-color: #00A65A;
+    color: #fff;
+    cursor: pointer;
+}
+
+.input-group-addon.remphone {
+    background-color: #f4543c;
+    color: #fff;
+    cursor: pointer;
+}
+
+.block-btn{
+    margin-top:10px;
+}
+
+.error{
+    padding: 5px 0;
+    color: red;
+}
+
+.sonata-ba-list-field-header {
+    width: 20px;
+}
+
+/*#loans-file-icon .loans-icon {
+    position: absolute;
+    left: -1000px;
+    opacity: 0;
+}*/
+
+.upload-file label {
+    position: relative;
+    margin-bottom: 50px;
+}
+
+.upload-file label:before{
+    content: 'Загрузить иконку';
+    position: absolute;
+    border: 1px dashed #ccc;
+    padding: 10px;
+    cursor: pointer;
+    left: 0;
+    top: 30px;
+    background: #fafafa;
+    font-weight: normal;
+    white-space: nowrap;
+}

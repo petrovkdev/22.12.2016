@@ -1,0 +1,16 @@
+{% extends 'TaxiLegionBundle::base.html.twig' %}
+
+{% block nav %}
+   {{ knp_menu_render('TaxiLegionBundle:Builder:adminMenu',{'template': 'TaxiLegionBundle:Menu:knp_menu.html.twig'}) }}
+{% endblock %}
+
+{% block body %}
+   <div class="row">
+      <div class="column col-md-6">
+         {% include 'TaxiLegionBundle:Admin/Panels:panel_configuration.html.twig' %}
+      </div>
+      <div class="column col-md-6">
+         <div class="cell">2</div>
+      </div>
+   </div>
+{% endblock %}

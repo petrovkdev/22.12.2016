@@ -1,0 +1,54 @@
+services:
+  app.form.type.services:
+      class: MfoBundle\Forms\ServicesForm
+      arguments: ["@doctrine.orm.entity_manager"]
+      tags:
+          - { name: form.type }
+
+  app.form.type.microfinance:
+        class: MfoBundle\Forms\MicrofinanceForm
+        arguments: ["@doctrine.orm.entity_manager"]
+        tags:
+            - { name: form.type }
+
+  app.form.type.staff:
+          class: MfoBundle\Forms\StaffForm
+          arguments: ["@doctrine.orm.entity_manager"]
+          tags:
+              - { name: form.type }
+
+  admin.news:
+          class: MfoBundle\Admin\NewsAdmin
+          arguments: [~, MfoBundle\Entity\News, ~]
+          tags:
+              - { name: sonata.admin, manager_type: orm, label: Новости, group: Блоки }
+
+  admin.services:
+            class: MfoBundle\Admin\ServicesAdmin
+            arguments: [~, MfoBundle\Entity\Services, ~]
+            tags:
+                - { name: sonata.admin, manager_type: orm, label: Услуги, group: Блоки }
+
+  admin.microfinance:
+              class: MfoBundle\Admin\MicrofinanceAdmin
+              arguments: [~, MfoBundle\Entity\Microfinance, ~]
+              tags:
+                  - { name: sonata.admin, manager_type: orm, label: Микрофинансирование, group: Блоки }
+
+  admin.info:
+            class: MfoBundle\Admin\InfoAdmin
+            arguments: [~, MfoBundle\Entity\Information, ~]
+            tags:
+                - { name: sonata.admin, manager_type: orm, label: Информация, group: Блоки }
+
+  admin.staff:
+            class: MfoBundle\Admin\StaffAdmin
+            arguments: [~, MfoBundle\Entity\Staff, ~]
+            tags:
+                - { name: sonata.admin, manager_type: orm, label: Сотрудники, group: Блоки }
+
+  admin.address:
+            class: MfoBundle\Admin\AddressAdmin
+            arguments: [~, MfoBundle\Entity\Address, ~]
+            tags:
+                - { name: sonata.admin, manager_type: orm, label: Адреса, group: Блоки }

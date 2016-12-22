@@ -1,0 +1,48 @@
+{% extends 'SonataAdminBundle::standard_layout.html.twig' %}
+{% form_theme form_calc 'MfoBundle:Form:bootstrap_3_layout.html.twig' %}
+
+{% block sonata_head_title %}{{  parent() }} - Настройки калькулятора{% endblock %}
+
+{% block stylesheets %}
+    {{  parent() }}
+    <link rel="stylesheet" href="{{ asset('bundles/sonatatranslation/css/sonata-translation.css') }}" />
+    <link rel="stylesheet" href="{{ asset('bundles/mfo/css/sonata-admin.css') }}" />
+    <link rel="icon" type="image/x-icon" href="{{ asset('bundles/mfo/tmp/favicon/favicon.ico') }}" />
+{% endblock %}
+
+{% block breadcrumb %}
+    <li><a href="{{ url('sonata_admin_dashboard') }}">{% trans %}Dashboard{% endtrans %}</a></li>
+    <li class="active"><span>Настройки калькулятора</span></li>
+{% endblock %}
+
+{% block side_bar_after_nav %}
+    {{ knp_menu_render('MfoBundle:Builder:adminMenu') }}
+{% endblock %}
+
+{% block sonata_page_content_nav %}
+    <nav class="navbar navbar-default" role="navigation">
+        <div class="navbar-header">
+            <span class="navbar-brand">Настройки калькулятора</span>
+        </div>
+    </nav>
+{% endblock %}
+
+{% block sonata_admin_content %}
+<form name="form_calc" id="form-calc" action="{{ path('admin_mfo_calculator') }}" method="post">
+        <div class="row">
+            <div class="sonata-ba-list col-md-12">
+                <div class="box box-primary">
+                    <div class="box-body">
+                        {{ form_row(form_calc.percent) }}
+                        {{ form_row(form_calc.max_summ) }}
+                        {{ form_row(form_calc.max_time) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    <div class="well well-small form-actions">
+        <button type="submit" class="btn btn-success" name="form[save]"><i class="fa fa-save"></i> Сохранить</button>
+    </div>
+    {{ form_widget(form_calc._token) }}
+</form>
+{% endblock %}

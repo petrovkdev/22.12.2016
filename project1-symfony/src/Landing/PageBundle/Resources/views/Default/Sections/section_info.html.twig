@@ -1,0 +1,8 @@
+<section class="row-section" id="info">
+    <div class="container-fluid landing-section">
+        <h2>Информация</h2>
+        {% for item in info %}
+            <div class="item item-info"><a class="show-modal-content prevent-default" href="#" data-id="{{ item.id }}" data-action="info">{{ item.title }}</a></div>
+        {% endfor %}
+    </div>
+</section>

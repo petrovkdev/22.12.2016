@@ -1,0 +1,10 @@
+services:
+  twig.json_decode:
+      class: Site\FrontendBundle\Twig\Extension\JsonDecode
+      tags:
+          - { name: twig.extension }
+
+  twig.replace_date:
+        class: Site\FrontendBundle\Twig\Extension\ReplaceDate
+        tags:
+            - { name: twig.extension }

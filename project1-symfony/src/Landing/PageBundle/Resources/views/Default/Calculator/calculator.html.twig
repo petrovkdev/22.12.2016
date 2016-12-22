@@ -1,0 +1,32 @@
+{% form_theme form_calc 'MfoBundle:Form:bootstrap_3_layout.html.twig' %}
+<h3>Кредитный калькулятор</h3>
+<form action="{{ path('landing_page_ajax') }}" method="post" id="calc-forma">
+    <div class="form-group">
+        {{ form_errors(form_calc.sum) }}
+        {{ form_label(form_calc.sum) }}
+        <div class="input-group">
+            {{ form_widget(form_calc.sum) }}
+            <span class="input-group-addon addon-form-sum"></span>
+        </div>
+    </div>
+    <div class="form-group clearfix">
+        <div class="pull-left" id="time-field">
+            {{ form_errors(form_calc.time) }}
+            {{ form_label(form_calc.time) }}
+            <div class="input-group">
+                {{ form_widget(form_calc.time) }}
+                <span class="input-group-addon"></span>
+            </div>
+        </div>
+        <div id="date-field">
+            {{ form_errors(form_calc.date) }}
+            {{ form_label(form_calc.date) }}
+            <div class="input-group">
+                {{ form_widget(form_calc.date) }}
+                <span class="input-group-addon"><span class="glyphicon glyphicon-calendar icon-date"></span></span>
+            </div>
+        </div>
+    </div>
+    {{ form_widget(form_calc.save) }}
+    {{ form_widget(form_calc._token) }}
+</form>

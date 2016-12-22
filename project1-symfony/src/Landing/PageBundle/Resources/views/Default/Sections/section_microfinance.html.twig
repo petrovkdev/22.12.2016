@@ -1,0 +1,28 @@
+<section class="row-section" id="microfinance">
+    <div class="container-fluid landing-section">
+        <h2>Микрофинансирование</h2>
+        <div class="row app-row app-table">
+            <div class="col-xs-6 item app-cell">
+                <div class="row">
+                    <h3>ИНДИВИДУАЛЬНЫЙ ПРЕДПРИНИМАТЕЛЬ</h3>
+                    {% for item in ip %}
+                        <div class="link-item">
+                            <a class="link-pdf" href="{% path item.media, 'reference' %}" target="_blank">{{ item.name }}</a>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="item-separator app-cell"></div>
+            <div class="col-xs-6 item app-cell">
+                <div class="row">
+                    <h3>ЮРИДИЧЕСКОЕ ЛИЦО</h3>
+                    {% for item in ul %}
+                        <div class="link-item">
+                            <a class="link-pdf" href="{% path item.media, 'reference' %}" target="_blank">{{ item.name }}</a>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

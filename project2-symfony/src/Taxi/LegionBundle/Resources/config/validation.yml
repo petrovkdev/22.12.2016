@@ -1,0 +1,153 @@
+Taxi\LegionBundle\Entity\User:
+    constraints:
+               - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity:
+                    fields: username
+                    message: 'Такой логин уже существует.'
+    properties:
+      username:
+              - NotBlank: ~
+
+      password:
+              - NotBlank: ~
+              - Length:
+                  min: 6
+                  minMessage: 'Пароль должен быть не менее {{ limit }} символов'
+
+Taxi\LegionBundle\Entity\Tariffs:
+    properties:
+          name:
+            - NotBlank: ~
+
+          price:
+            - NotBlank: ~
+
+          price_pending:
+            - NotBlank: ~
+
+          price_overdrive:
+            - NotBlank: ~
+
+          start_counter:
+            - NotBlank: ~
+
+Taxi\LegionBundle\Entity\BlackUsers:
+    constraints:
+               - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity:
+                  fields: phone
+                  message: 'Такой телефон уже существует в черном списке.'
+    properties:
+          name:
+            - NotBlank:
+                     message: Укажите ФИО
+          phone:
+            - NotBlank:
+                message: Укажите телефон
+            - Length:
+                min: 10
+                max: 10
+            - Type:
+                type: numeric
+                message: Значение не соответствует формату. Нужно вводить цифры.
+          comment:
+             - NotBlank:
+                      message: Укажите причину.
+
+Taxi\LegionBundle\Entity\Drivers:
+    constraints:
+               - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity:
+                    fields: name
+                    message: 'Такое значение уже существует.'
+
+               - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity:
+                    fields: driverCall
+                    message: 'Такое значение уже существует.'
+
+               - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity:
+                    fields: driverMachine
+                    message: 'Такое значение уже существует.'
+
+    properties:
+          name:
+            - NotBlank: ~
+
+          driverCall:
+            - NotBlank: ~
+            - Type:
+                  type: numeric
+                  message: Значение не соответствует формату. Нужно вводить цифры.
+
+          driverMachine:
+            - NotBlank: ~
+
+          machineMarka:
+            - NotBlank: ~
+
+          machineColor:
+            - NotBlank: ~
+
+          phone:
+            - NotBlank: ~
+            - Length:
+                max: 10
+            - Type:
+                type: numeric
+                message: Значение не соответствует формату. Нужно вводить цифры.
+
+          address:
+            - NotBlank: ~
+
+Taxi\LegionBundle\Entity\Orders:
+  properties:
+    phone:
+      - NotBlank: ~
+      - Length:
+          max: 10
+      - Type:
+            type: numeric
+            message: Значение не соответствует формату. Нужно вводить цифры.
+    user:
+      - NotBlank: ~
+    streetSource:
+      - NotBlank: ~
+    houseNumberSource:
+      - NotBlank: ~
+    driver:
+      - NotBlank: ~
+    area:
+          - NotBlank: ~
+
+Taxi\LegionBundle\Entity\TypeOrder:
+    constraints:
+               - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity:
+                    fields: name
+                    message: 'Такое значение уже существует.'
+    properties:
+          name:
+            - NotBlank: ~
+
+          adjustment:
+                 - NotBlank: ~
+
+Taxi\LegionBundle\Entity\AreaOrder:
+    constraints:
+               - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity:
+                    fields: name
+                    message: 'Такое значение уже существует.'
+    properties:
+          name:
+            - NotBlank: ~
+
+          adjustment:
+                 - NotBlank: ~
+
+Taxi\LegionBundle\Entity\Discount:
+    constraints:
+               - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity:
+                    fields: name
+                    message: 'Такое название уже существует.'
+    properties:
+          name:
+            - NotBlank: ~
+
+          discount:
+                 - NotBlank: ~

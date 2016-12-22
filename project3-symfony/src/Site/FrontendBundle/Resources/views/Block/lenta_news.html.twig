@@ -1,0 +1,6 @@
+{% extends 'SiteFrontendBundle:Base:block_base.html.twig' %}
+
+{% block block_title %}<a href="{{ path('news') }}" class="link-underline">Новости</a>{% endblock %}
+{% block block_content %}
+    {{ render(controller('SiteFrontendBundle:Base:news', {'slug': slug })) }}
+{% endblock %}

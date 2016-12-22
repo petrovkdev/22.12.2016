@@ -1,0 +1,13 @@
+{% form_theme form_config 'TaxiLegionBundle:Form:bootstrap_3_layout.html.twig' %}
+{{ form_start(form_config) }}
+<div class="panel panel-primary">
+    <div class="panel-heading">Конфигурация</div>
+    <div class="panel-body">
+        <fieldset>
+            <legend>Тариф</legend>
+            {{ form_row(form_config.tariff) }}
+        </fieldset>
+    </div>
+    <div class="panel-footer clearfix">{{ form_widget(form_config.save) }}</div>
+</div>
+{{ form_end(form_config) }}

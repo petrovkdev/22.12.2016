@@ -1,0 +1,21 @@
+<section class="row-section" id="addresses">
+    <div class="container-fluid landing-section clearfix">
+        <h2>Адреса</h2>
+        <div id="list-address" class="pull-left">
+            {% for row in addresses %}
+                <a href="#" class="item-address prevent-default" data-address="{{ row.address|raw }}">
+                    {{ row.office|raw }}: {{ row.address|raw }}
+                    {% if row.phone %}
+                        <div class="address-phones">Т.: {{ row.phone|raw }}</div>
+                    {% endif %}
+                    {% if row.body %}
+                        <div class="dop-info">
+                            {{ row.body|raw }}
+                        </div>
+                    {% endif %}
+                </a>
+            {% endfor %}
+        </div>
+        <div id="map"></div>
+    </div>
+</section>

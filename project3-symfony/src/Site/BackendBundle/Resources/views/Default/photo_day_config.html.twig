@@ -1,0 +1,58 @@
+{% extends 'SonataAdminBundle::standard_layout.html.twig' %}
+{% form_theme form 'SiteBackendBundle:Form:bootstrap_3_layout.html.twig' %}
+
+{% block sonata_head_title %}{{  parent() }} - Фото дня{% endblock %}
+
+{% block stylesheets %}
+    {{  parent() }}
+    <link rel="stylesheet" href="{{ asset('bundles/site/css/admin.css') }}" />
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+{% endblock %}
+
+{% block breadcrumb %}
+    <li><a href="{{ url('sonata_admin_dashboard') }}">{% trans %}Панель{% endtrans %}</a></li>
+    <li class="active"><span>Фото дня</span></li>
+{% endblock %}
+
+{% block side_bar_after_nav %}
+    {{ knp_menu_render('SiteBackendBundle:Builder:adminMenu') }}
+{% endblock %}
+
+{% block sonata_page_content_nav %}
+
+    <nav class="navbar navbar-default" role="navigation">
+        <div class="navbar-header">
+            <span class="navbar-brand">Фото дня</span>
+        </div>
+    </nav>
+{% endblock %}
+
+{% block sonata_admin_content %}
+    <form name="form" action="{{ path('photo_day_config') }}" method="post" enctype="multipart/form-data">
+        <div class="row">
+            <div class="sonata-ba-list col-md-12">
+                <div class="box box-primary">
+                    <div class="box-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <fieldset>
+                                    <legend>Настройки</legend>
+
+                                    {{ form_row(form.name) }}
+                                    {{ form_row(form.media) }}
+                                    {{ form_row(form.enabled) }}
+
+                                </fieldset>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="well well-small form-actions">
+            <button type="submit" class="btn btn-success" name="form[save]"><i class="fa fa-save"></i> Сохранить</button>
+        </div>
+        {{ form_widget(form._token) }}
+    </form>
+{% endblock %}

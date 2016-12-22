@@ -1,0 +1,25 @@
+_sonata_admin:
+    resource: .
+    type: sonata_admin
+    prefix: /управление
+
+login:
+    path:     /управление/авторизация
+    defaults: { _controller: SiteBackendBundle:Security:login }
+
+logout:
+    path: /выход
+
+user_edit:
+    path:     /управление/администратор/редактирование/{id}
+    defaults: { _controller: SiteBackendBundle:Admin:useredit }
+    requirements:
+      id: \d
+
+site_settings:
+    path:     /управление/настройки-сайта
+    defaults: { _controller: SiteBackendBundle:Admin:site }
+
+photo_day_config:
+    path:     /управление/фото-дня
+    defaults: { _controller: SiteBackendBundle:Admin:photo_day }

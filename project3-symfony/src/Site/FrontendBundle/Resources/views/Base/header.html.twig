@@ -1,0 +1,6 @@
+<div id="time" class="pull-right text-center">{{ time|localizeddate('none', 'none', 'ru', null, 'dd MMMM Y, EEEE, HH:mm') }}</div>
+<div id="container-contact" class="clearfix">
+    <div class="element-contact pull-left clearfix" id="address"><i class="pull-left"></i><span class="text-contact">{{ address }}</span></div>
+    <div class="element-contact pull-left clearfix" id="phone"><i class="pull-left"></i><span class="text-contact">{{ phone }}</span></div>
+    <div class="element-contact pull-left clearfix" id="email"><i class="pull-left"></i><a href="mailto:{{ email }}" rel="nofollow" class="text-contact">{{ email }}</a></div>
+</div>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        {% block meta %}{% endblock %}
+        <title>{% block title %}{% endblock %}</title>
+        {% block stylesheets %}
+            <link href="{{ asset('bundles/mfo/css/bootstrap.min.css') }}" type="text/css" rel="stylesheet" />
+            <link href="{{ asset('bundles/mfo/css/jquery-ui.css') }}" type="text/css" rel="stylesheet" />
+            <link href="{{ asset('bundles/mfo/js/highslide/highslide.css') }}" type="text/css" rel="stylesheet" />
+            <link href="{{ asset('bundles/mfo/css/landing.css') }}?{{ date().timestamp }}" type="text/css" rel="stylesheet" />
+        {% endblock %}
+        {% block favicon %}{% endblock %}
+        <!--[if lt IE 9]>
+          <script src="{{ asset('bundles/mfo/js/html5shiv.min.js') }}" type="text/javascript"></script>
+          <script src="{{ asset('bundles/mfo/js/respond.min.js') }}" type="text/javascript"></script>
+        <![endif]-->
+    </head>
+    <body>    
+        {% block header %}{% endblock %}
+        <article class="container">
+            {% block body %}{% endblock %}
+        </article>
+        {% block footer %}{% endblock %}
+        {% block javascripts %}
+            <div id="preloader" class="hide"></div>
+            <script src="{{ asset('bundles/mfo/js/jquery.js') }}" type="text/javascript"></script>
+            <script src="{{ asset('bundles/mfo/js/jquery-ui.js') }}" type="text/javascript"></script>
+            <script src="{{ asset('bundles/mfo/js/bootstrap.min.js') }}" type="text/javascript"></script>
+            <script src="{{ asset('bundles/mfo/js/jquery-form-ajax.js') }}" type="text/javascript"></script>
+            <script src="{{ asset('bundles/mfo/js/jquery.scrollTo.min.js') }}" type="text/javascript"></script>
+            <script src="{{ asset('bundles/mfo/js/highslide/highslide-full.min.js') }}" type="text/javascript"></script>
+            <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
+            <script src="{{ asset('bundles/mfo/js/main.js') }}?{{ date().timestamp }}" type="text/javascript"></script>           
+        {% endblock %}
+    </body>
+</html>

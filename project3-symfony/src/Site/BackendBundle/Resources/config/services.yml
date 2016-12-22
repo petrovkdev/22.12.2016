@@ -1,0 +1,24 @@
+services:
+  app.form.type.photo.day:
+        class: Site\BackendBundle\Forms\PhotoDayForm
+        arguments: ["@doctrine.orm.entity_manager"]
+        tags:
+            - { name: form.type }
+
+  app.form.type.news.post:
+          class: Site\BackendBundle\Forms\NewsPostForm
+          arguments: ["@doctrine.orm.entity_manager"]
+          tags:
+              - { name: form.type }
+
+  admin.news.category:
+      class: Site\BackendBundle\Admin\NewsCategoryAdmin
+      arguments: [~, Site\BackendBundle\Entity\NewsCategory, ~]
+      tags:
+          - { name: sonata.admin, manager_type: orm, label: Рубрики, group: Менеджер материалов }
+
+  admin.news.post:
+        class: Site\BackendBundle\Admin\NewsPostAdmin
+        arguments: [~, Site\BackendBundle\Entity\NewsPost, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Новости, group: Менеджер материалов }

@@ -1,0 +1,17 @@
+{% extends 'SonataAdminBundle::standard_layout.html.twig' %}
+
+{% block stylesheets %}
+    {{  parent() }}
+    <link rel="stylesheet" href="{{ asset('bundles/sonatatranslation/css/sonata-translation.css') }}" />
+    <link rel="stylesheet" href="{{ asset('bundles/mfo/css/sonata-admin.css') }}" />
+    <link rel="icon" type="image/x-icon" href="{{ asset('bundles/mfo/tmp/favicon/favicon.ico') }}" />
+{% endblock %}
+
+{% block javascripts %}
+    {{  parent() }}
+    <script src="{{ asset('bundles/mfo/js/sonata-admin.js') }}"></script>
+{% endblock %}
+
+{% block side_bar_after_nav %}
+    {{ knp_menu_render('MfoBundle:Builder:adminMenu') }}
+{% endblock %}

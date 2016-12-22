@@ -1,0 +1,49 @@
+<section class="row-section" id="staff">
+    <div class="container-fluid landing-section">
+        <h2>Сотрудники</h2>
+        {% for item in staff|batch(3) %}
+            <div class="row row-staff">
+                {% for column in item %}
+                    <a href="#" data-toggle="modal" data-target="#staff{{ column.id }}" class="item prevent-default pull-left col-xs-4">
+                        {% if column.media %}
+                            <div class="staff-image pull-left text-center">
+                                <img src="{% path column.media, 'portrait' %}" alt="{{ column.userName }} - {{ column.position }}">
+                            </div>
+                        {% else %}
+                            <img src="{{ asset('/bundles/mfo/image/no-image-user.jpg') }}" class="noimage pull-left" alt="Фото отсутствует">
+                        {% endif %}
+                        <div class="description">
+                            <h3><span>{{ column.userName }}</span></h3>                                                        
+                            <div class="phone-staff">
+                              {% for p in column.phone|split(',') %}
+                              <div>{{ p }}</div>
+                              {% endfor %}
+                            </div>                            
+                        </div>
+                    </a>
+                    <div class="modal fade" id="staff{{ column.id }}" tabindex="-1" role="dialog" aria-labelledby="staff{{ column.id }}Label" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                  <h4 class="modal-title">{{ column.userName }}</h4>
+                              </div>
+                              <div class="modal-body staffdesc description">
+                                <div class="pos">{{ column.position }}</div>
+                                <div class="educate"><strong>Образование:</strong> {{ column.educate }}</div>
+                                <div class="desc">
+                                <strong>Курируемые вопросы:</strong><br>
+                                {{ column.description|raw }}
+                                </div>
+                              </div>
+                              <div class="modal-footer">
+                                  <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
+                              </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endfor %}
+    </div>
+</section>

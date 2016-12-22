@@ -1,0 +1,42 @@
+<section class="row-section" id="loans">
+    <div class="container-fluid landing-section">
+        <h2>Займы</h2>
+        <div class="clearfix">
+            <div id="calculator" class="pull-right">
+                {% include 'LandingPageBundle:Default/Calculator:calculator.html.twig' %}
+            </div>
+            <div class="row column column-loans clearfix">
+                <div class="col-xs-4 column-item">
+                    <div class="column-item-content">
+                        <div class="percent-icon row-item">
+                            <div class="row-item-cell"></div>
+                        </div>
+                        <div class="percent-text row-item">
+                            <div class="row-item-cell">{{ percent }}% годовых</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-4 column-item">
+                    <div class="column-item-content">
+                        <div class="max-summ-icon row-item">
+                            <div class="row-item-cell"></div>
+                        </div>
+                        <div class="max-summ-text row-item">
+                            <div class="row-item-cell">{{ max_summ|number_format('0', '', ' ') }}<br>максимальная сумма</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-4 column-item">
+                    <div class="column-item-content">
+                        <div class="max-time-icon row-item">
+                            <div class="row-item-cell"></div>
+                        </div>
+                        <div class="max-time-text row-item">
+                            <div class="row-item-cell">до {{ max_time }} месяцев</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

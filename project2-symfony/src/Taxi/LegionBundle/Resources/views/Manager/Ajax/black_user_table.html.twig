@@ -1,0 +1,32 @@
+<div class="section-option">
+    <div class="panel panel-primary">
+        <div class="panel-heading">Список заблокированных абонентов <span class="label label-info app-label pull-right">{{ result|length }}</span></div>
+        {% if result %}
+            <table class="table table-striped">
+                <tr>
+                    <th>#</th>
+                    <th>ФИО</th>
+                    <th>Телефон</th>
+                    <th>Причина</th>
+                    <th>Опции</th>
+                </tr>
+                {% for item in result %}
+                    <tr>
+                        <td>{{ loop.index }}</td>
+                        <td>{{ item.name }}</td>
+                        <td>+7{{ item.phone }}</td>
+                        <td>{{ item.comment }}</td>
+                        <td>
+                            <a href="#" class="btn btn-warning btn-sm show-modal" data-action="abonent_edit" data-id="{{ item.id }}">
+                                <span class="glyphicon glyphicon-edit"></span> Редактировать</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </table>
+        {% else %}
+            <div class="panel-body">
+                <span>Нет заблокированных абонентов</span>
+            </div>
+        {% endif %}
+    </div>
+</div>

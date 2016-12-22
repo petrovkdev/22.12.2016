@@ -1,0 +1,10 @@
+{% set media = render(controller('SiteFrontendBundle:Base:media_photo_day'))|json_decode  %}
+
+{% extends media.enabled and media.media ? 'SiteFrontendBundle:Base:block_base.html.twig' : 'SiteFrontendBundle:Base:null.html.twig' %}
+
+{% block block_title %}Фото дня{% endblock %}
+{% block block_content %}
+    <a href="{% path  media.media, 'reference' %}?{{ date().timestamp }}" class="highslide" onclick="return hs.expand(this)" title="{{ media.name|e|raw }}">
+        <img src="{% path  media.media, 'photo_day' %}?{{ date().timestamp }}" class="img-rounded photo-day" alt="{{ media.name|e|raw }}">
+    </a>
+{% endblock %}

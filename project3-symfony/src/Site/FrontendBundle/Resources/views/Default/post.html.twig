@@ -1,0 +1,29 @@
+{% extends 'SiteFrontendBundle::base.html.twig' %}
+{% block title %}{{ parent() }}|{{ post.title|raw }}{% endblock %}
+{% block body %}
+    <section id="post">
+        <h1>{{ post.title }}</h1>
+        {% if post.media %}
+            {% if not post.mediaAnons %}
+            <div class="thumbnail">
+                <img src="{% path post.media, 'preview_big' %}?{{ date().timestamp }}" class="img-rounded img-responsive" alt="{{ post.title }}">
+            </div>
+            {% endif %}
+        {% endif %}
+        <div class="post-body clearfix">
+            {{ post.body|raw }}
+        </div>
+        <div class="post-footer text-right">
+            {% if category_slug is defined %}
+                <a href="{{ path('category', {'slug':category_slug}) }}" rel="nofollow" class="tag link-underline pull-left" title="Рубрика"><i class="glyphicon glyphicon-tag"></i>{{ category_title }}</a>
+            {% endif %}
+            <span class="post-date date" title="Дата публикации">
+                <i class="glyphicon glyphicon-calendar"></i>
+                {{ post.date|localizeddate('none', 'none', 'ru', null, 'dd MMMM Y')|replace_date }}
+            </span>
+            {% if post.autor %}
+                <span class="post-autor autor" title="Автор"><i class="glyphicon glyphicon-user"></i> {{ post.autor }}</span>
+            {% endif %}
+        </div>
+    </section>
+{% endblock %}

@@ -1,0 +1,31 @@
+_sonata_admin:
+    resource: .
+    type: sonata_admin
+    prefix: /adminmfo
+
+login:
+    path:     /adminmfo/login
+    defaults: { _controller: MfoBundle:Login:login }
+
+logout:
+    path: /logout
+
+admin_mfo_ajax:
+    path:  /adminmfo/mfo/ajax
+    defaults: { _controller: MfoBundle:Admin:ajax }
+    requirements:
+        _method:  POST
+
+admin_mfo_user_edit:
+    path:     /adminmfo/mfo/user/edit/{id}
+    defaults: { _controller: MfoBundle:Admin:useredit }
+    requirements:
+      id: \d
+
+admin_mfo_site:
+    path: /adminmfo/mfo/site
+    defaults: {_controller: MfoBundle:Admin:site}
+
+admin_mfo_calculator:
+    path: /adminmfo/mfo/calculator-confiration
+    defaults: {_controller: MfoBundle:Admin:calculator_configyration}

@@ -1,0 +1,83 @@
+{% extends 'LandingPageBundle::base.html.twig' %}
+
+{% block meta %}
+
+    {% if robots %}
+        <meta name="robots" content="noindex,nofollow">
+    {% endif %}
+
+    {% if description %}
+        <meta name="description" content="{{ description }}" />
+    {% endif %}
+
+    {% if keywords %}
+        <meta name="keywords" content="{{ keywords }}" />
+    {% endif %}
+
+{% endblock %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block favicon %}
+    <link rel="icon" type="image/x-icon" href="{{ asset(favicon_path) }}" />
+{% endblock %}
+
+{% block header %}
+
+    <header>
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-6">
+                    <figure id="logo" class="clearfix">
+                        <div class="image-logo pull-left"><img src="{{ asset(logo_path) }}" alt="{{ slogan }}" /></div>
+                        <h1 id="slogan">{{ slogan|raw }}</h1>
+                    </figure>
+                </div>
+                <div class="col-xs-6">
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <section id="address">{{ address|replace({'Республика,': 'Республика,<br>'})|raw }}</section>
+                        </div>
+                        <div class="col-xs-6 clearfix">
+                            <section id="phones" class="pull-right">
+                                {% for phone in phones %}
+                                    <div class="phone">{{ phone }}{% if not loop.last %},{% endif %}</div>
+                                {% endfor %}
+                            </section>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <nav>
+            <div class="container">
+                {{ knp_menu_render('LandingPageBundle:Builder:siteMenu') }}
+            </div>
+        </nav>
+
+    </header>
+
+{% endblock %}
+
+{% block body %}
+    {% include 'LandingPageBundle:Default/Sections:section_loans.html.twig' %}
+    {% include 'LandingPageBundle:Default/Sections:section_news.html.twig' %}
+    {% include 'LandingPageBundle:Default/Sections:section_services.html.twig' %}
+    {% include 'LandingPageBundle:Default/Sections:section_microfinance.html.twig' %}
+    {% include 'LandingPageBundle:Default/Sections:section_info.html.twig' %}
+    {% include 'LandingPageBundle:Default/Sections:section_staff.html.twig' %}
+    {% include 'LandingPageBundle:Default/Sections:section_address.html.twig' %}
+{% endblock %}
+
+{% block footer %}
+    <footer class="container-fluid">
+        <div class="container clearfix">
+            <div class="copy pull-left">&copy; {{ date().timestamp|date('Y') }}, {{ title }}<br>
+            <a href="https://vk.com/club98649673" class="vkgroup" target="_blank">Группа ВКонтакте</a>
+            </div>
+            <div class="design pull-right">Дизайн и создание сайта - студия &laquo;<a href="http://www.webvk.ru/" target="_blank">WEBVK</a>&raquo;</div>
+        </div>
+    </footer>
+{% endblock %}
+

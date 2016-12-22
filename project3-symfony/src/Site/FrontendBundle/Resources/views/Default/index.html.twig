@@ -1,0 +1,32 @@
+{% extends 'SiteFrontendBundle::base.html.twig' %}
+{% block body %}
+    {% for item in news %}
+        <section class="item-section">
+            <a href="{{ path('news_category_post', {'category_slug':item.category_slug,'slug':item.slug}) }}" class="link-underline anons-title">
+                {{ item.title }}
+            </a>
+            <div class="anons-content clearfix">
+                {% if item.media %}
+                    <a href="{{ path('news_category_post', {'category_slug':item.category_slug,'slug':item.slug}) }}" rel="nofollow">
+                        <img src="{% path item.media, 'preview_small' %}?{{ date().timestamp }}" class="img-rounded pull-left" alt="{{ item.title }}">
+                    </a>
+                {% endif %}
+                <div class="anons{% if not item.media %} anons-full-width{% endif %}">{{ item.body|striptags|replace({'&nbsp;':' '})|slice(0,300)|raw }}...</div>
+            </div>
+            <div class="anons-footer">
+                <div class="block-table">
+                    <div class="block-table-cell anons-footer-info">
+                        <span class="date info pull-left" title="Дата публикации"><i class="glyphicon glyphicon-calendar"></i> {{ item.date|localizeddate('none', 'none', 'ru', null, 'dd MMMM Y')|replace_date }}</span>
+                        <span class="info">
+                            <a href="{{ path('category', {'slug':item.category_slug}) }}" class="tag link-underline pull-left" title="Рубрика">
+                                <i class="glyphicon glyphicon-tag"></i>{{ item.category }}
+                            </a>
+                        </span>
+                    </div>
+                    <a href="{{ path('news_category_post', {'category_slug':item.category_slug,'slug':item.slug}) }}" rel="nofollow" class="link-more block-table-cell">подробнее</a>
+                </div>
+            </div>
+        </section>
+    {% endfor %}
+{% endblock %}
+

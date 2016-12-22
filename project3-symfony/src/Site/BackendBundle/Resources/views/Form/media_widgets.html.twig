@@ -1,0 +1,21 @@
+{% block sonata_media_type_widget %}
+    <div class="row">
+        <div class="col-md-3">
+            {% if value is not empty and value.providerReference %}
+                <div class="pull-left" style="margin-right: 5px">
+                    <img src="{% path  value, 'admin' %}?{{ date().timestamp }}" class="img-polaroid media-object">
+                </div>
+            {% else %}
+                <div class="pull-left" style="margin-right: 5px">
+                    <img src="{{ asset('bundles/sonatamedia/grey.png') }}" class="img-polaroid media-object" style="width: 85px; height: 85px"/>
+                </div>
+            {% endif %}
+        </div>
+
+        <div class="col-md-3">
+            {{ 'link_media'|trans({}, 'SonataMediaBundle') }}
+            {{ block('form_widget') }}
+        </div>
+    </div>
+
+{% endblock sonata_media_type_widget %}

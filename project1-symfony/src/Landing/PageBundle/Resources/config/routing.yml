@@ -1,0 +1,9 @@
+landing_page_homepage:
+    path:     /
+    defaults: { _controller: LandingPageBundle:Default:index }
+
+landing_page_ajax:
+    path:  /ajax
+    defaults: { _controller: LandingPageBundle:Default:ajax }
+    requirements:
+        _method:  POST

@@ -1,0 +1,19 @@
+{% form_theme form 'TaxiLegionBundle:Form:bootstrap_3_layout.html.twig' %}
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+    <h4 class="modal-title">Форма добавления в черный список</h4>
+</div>
+<div class="modal-body clearfix">
+    <div id="alert-block"></div>
+    {{ form_start(form) }}
+    {{ form_row(form.name) }}
+    <div class="form-group">
+        {{ form_label(form.phone) }}
+        <div class="input-group input-group-sm">
+            <span class="input-group-addon">+7</span>
+            {{ form_widget(form.phone) }}
+        </div>
+    </div>
+    {{ form_end(form) }}
+
+</div>

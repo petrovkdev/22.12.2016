@@ -1,0 +1,48 @@
+{% extends 'SonataAdminBundle::standard_layout.html.twig' %}
+{% form_theme form_edit_user 'SiteBackendBundle:Form:bootstrap_3_layout.html.twig' %}
+
+{% block sonata_head_title %}{{  parent() }} - Редактирование пользователя{% endblock %}
+
+{% block stylesheets %}
+    {{  parent() }}
+    <link rel="stylesheet" href="{{ asset('bundles/site/css/admin.css') }}" />
+{% endblock %}
+
+
+{% block breadcrumb %}
+    <li><a href="{{ url('sonata_admin_dashboard') }}">{% trans %}Панель{% endtrans %}</a></li>
+    <li class="active"><span>Редактирование пользователя</span></li>
+{% endblock %}
+
+{% block side_bar_after_nav %}
+   {{ knp_menu_render('SiteBackendBundle:Builder:adminMenu') }}
+{% endblock %}
+
+{% block sonata_page_content_nav %}
+    <nav class="navbar navbar-default" role="navigation">
+        <div class="navbar-header">
+            <span class="navbar-brand">Редактирование пользователя</span>
+        </div>
+    </nav>
+{% endblock %}
+
+{% block sonata_admin_content %}
+    <form name="form_edit_user" id="form-edit-user" action="{{ path('user_edit', {'id':1}) }}" method="post">
+        <div class="row">
+            <div class="sonata-ba-list col-md-12">
+                <div class="box box-primary">
+                    <div class="box-body">
+                        {{ form_row(form_edit_user.username) }}
+                        {{ form_row(form_edit_user.password) }}
+                        {{ form_row(form_edit_user.email) }}
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="well well-small form-actions">
+            <button type="submit" class="btn btn-success" name="form[save]"><i class="fa fa-save"></i> Сохранить</button>
+        </div>
+        {{ form_widget(form_edit_user._token) }}
+    </form>
+{% endblock %}

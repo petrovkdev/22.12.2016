@@ -1,0 +1,55 @@
+{% form_theme form 'TaxiLegionBundle:Form:bootstrap_3_layout.html.twig' %}
+{{ form_start(form) }}
+<div class="form-group{% if form_errors(form.phone) %} has-error{% endif %}">
+    {{ form_label(form.phone) }}
+    <div class="input-group input-group-sm">
+        <span class="input-group-addon">+7</span>
+        {{ form_widget(form.phone) }}
+    </div>
+    {{ form_errors(form.phone) }}
+
+</div>
+{{ form_row(form.user) }}
+
+<div class="row">
+    <div class="col-xs-6">
+        <fieldset>
+            <legend>Адрес (откуда)</legend>
+            {{ form_row(form.streetSource) }}
+            {{ form_row(form.houseNumberSource) }}
+            {{ form_row(form.porchSource) }}
+        </fieldset>
+    </div>
+    <div class="col-xs-6">
+        <fieldset>
+            <legend>Адрес (куда)</legend>
+            {{ form_row(form.streetDest) }}
+            {{ form_row(form.houseNumberDest) }}
+            {{ form_row(form.porchDest) }}
+        </fieldset>
+    </div>
+</div>
+{{ form_row(form.driver) }}
+
+{{ form_row(form.area) }}
+
+<div class="row">
+    <div class="col-xs-4">{{ form_row(form.childSeat) }}</div>
+    <div class="col-xs-4">{{ form_row(form.luggage) }}</div>
+    <div class="col-xs-4">{{ form_row(form.prior) }}</div>
+</div>
+
+<fieldset>
+    <legend>Дата и время на предварительный заказ</legend>
+    <div class="row">
+        <div class="col-xs-6">
+            <div class="form-group">
+                <div class="input-group input-group-sm date js-datepicker">
+                    {{ form_widget(form.priorTime) }}
+                    <span class="input-group-addon btn"><i class="glyphicon glyphicon-calendar"></i></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</fieldset>
+{{ form_end(form) }}

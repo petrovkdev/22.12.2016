@@ -1,0 +1,20 @@
+{% form_theme form 'SiteFrontendBundle:Form:bootstrap_3_layout.html.twig' %}
+<div id="logo" class="pull-left">
+    {% if route == 'site_frontend_homepage' %}
+        <div class="hide"><h1>{{ render(controller('SiteFrontendBundle:Base:title'))|raw }}</h1></div>
+        <img src="{{ asset('bundles/site/images/logo.png') }}" alt="{{ render(controller('SiteFrontendBundle:Base:title'))|raw }}">
+    {% else %}
+        <a href="{{ path('site_frontend_homepage') }}"><img src="{{ asset('bundles/site/images/logo.png') }}" alt="{{ render(controller('SiteFrontendBundle:Base:title'))|raw }}"></a>
+    {% endif %}
+</div>
+<div id="navigation" class="clearfix">
+    {{ knp_menu_render('SiteFrontendBundle:Builder:siteMenu', {'currentAsLink': false}) }}
+    <div id="search" class="pull-right">
+        {{ form_start(form) }}
+        <div class="input-group">
+            {{ form_widget(form.q) }}
+            <span class="input-group-addon">{{ form_widget(form.search) }}</span>
+        </div>
+        {{ form_end(form) }}
+    </div>
+</div>

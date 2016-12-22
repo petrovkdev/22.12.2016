@@ -1,0 +1,28 @@
+{% extends 'TaxiLegionBundle::base.html.twig' %}
+{% form_theme form 'TaxiLegionBundle:Form:bootstrap_3_layout.html.twig' %}
+
+{% block title %}Редактирование скидки{% endblock %}
+
+{% block nav %}
+    {{ knp_menu_render('TaxiLegionBundle:Builder:adminMenu',{'template': 'TaxiLegionBundle:Menu:knp_menu.html.twig'}) }}
+{% endblock %}
+
+{% block body %}
+    <div class="section-option clearfix">
+        <h4>Редактирование скидки - {{ name }}</h4>
+        <div class="row">
+            <div class="col-lg-6 col-md-6">
+                {{ form_start(form) }}
+                {{ form_row(form.name) }}
+                {{ form_row(form.travel) }}
+                {{ form_row(form.abonent) }}
+                {{ form_row(form.discount) }}
+                <div class="form-group">
+                    {{ form_widget(form.save) }}
+                    <a href="{{ path('taxi_legion_discount_delete', {'id': id }) }}" class="btn btn-danger">Удалить</a>
+                </div>
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </div>
+{% endblock %}

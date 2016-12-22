@@ -1,0 +1,45 @@
+<?php
+
+
+namespace Taxi\LegionBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * @ORM\Entity
+ * @ORM\Table(name="tariffs")
+ */
+class Tariffs {
+
+    /**
+     * @ORM\Column(type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @ORM\Column(type="string", length=100)
+     */
+    private $name;
+
+    /**
+     * @ORM\Column(type="integer", length=10)
+     */
+    private $price;
+
+    /**
+     * @ORM\Column(type="integer", length=10)
+     */
+    private $price_pending;
+
+    /**
+     * @ORM\Column(type="integer", length=10)
+     */
+    private $price_overdrive;
+
+    /**
+     * @ORM\Column(type="integer", length=2)
+     */
+    private $start_counter;
+}

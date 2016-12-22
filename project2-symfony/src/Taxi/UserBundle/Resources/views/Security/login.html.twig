@@ -1,0 +1,46 @@
+{% extends "FOSUserBundle::layout.html.twig" %}
+{% block fos_user_link %}{% endblock fos_user_link %}
+{% block title %}{{ 'security.login.title'|trans({}, 'FOSUserBundle') }}{% endblock %}
+{% block fos_user_content %}
+
+    <div id="form-contain" class="text-left">
+
+    {% if error %}
+        <div class="alert alert-danger">{{ 'errors.error'|trans({}, 'FOSUserBundle') }}</div>
+    {% endif %}
+
+    <form role="form" action="{{ path("fos_user_security_check") }}" id="login" method="post">
+
+        <div class="media">
+            <div class="pull-left">
+                <img class="media-object" src="{{ asset('/images/logo.png') }}" alt="{{ 'logo.name'|trans({}, 'FOSUserBundle') }}">
+            </div>
+            <div class="media-body">
+                <h1 class="media-heading">{{ 'logo.name'|trans({}, 'FOSUserBundle') }}</h1>
+            </div>
+        </div>
+
+        <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+
+        <div class="form-group">
+            <div class="input-group input-group-lg">
+            <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
+            <input class="form-control" type="text" id="username" name="_username" value="{{ last_username }}" placeholder="{{ 'security.login.username'|trans({}, 'FOSUserBundle') }}" required="required" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="input-group input-group-lg">
+            <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
+            <input class="form-control"  type="password" id="password" name="_password" placeholder="{{ 'security.login.password'|trans({}, 'FOSUserBundle') }}" required="required" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <input type="submit" id="_submit" class="btn btn-warning btn-block btn-lg" name="_submit" value="{{ 'security.login.submit'|trans({}, 'FOSUserBundle') }}" />
+        </div>
+
+
+    </form>
+    </div>
+{% endblock fos_user_content %}

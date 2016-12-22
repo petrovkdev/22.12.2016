@@ -1,0 +1,34 @@
+<div class="section-option">
+    <a href="#" class="btn btn-danger show-modal" data-action="abonent_add">
+        <span class="glyphicon glyphicon-plus-sign"></span> Добавить абонента</a>
+</div>
+<div class="section-option">
+    <div class="panel panel-primary">
+        <div class="panel-heading">Список абонентов <span class="label label-info app-label pull-right">{{ result|length }}</span></div>
+        {% if result %}
+            <table class="table table-striped">
+                <tr>
+                    <th>#</th>
+                    <th>ФИО</th>
+                    <th>Телефон</th>
+                    <th>Опции</th>
+                </tr>
+                {% for item in result %}
+                    <tr>
+                        <td>{{ loop.index }}</td>
+                        <td>{{ item.name }}</td>
+                        <td>+7{{ item.phone }}</td>
+                        <td>
+                            <a href="#" class="btn btn-warning btn-sm show-modal" data-action="abonent_edit" data-id="{{ item.id }}">
+                                <span class="glyphicon glyphicon-edit"></span> Редактировать</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </table>
+        {% else %}
+            <div class="panel-body">
+                <span>Нет абонентов</span>
+            </div>
+        {% endif %}
+    </div>
+</div>

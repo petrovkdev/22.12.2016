@@ -1,0 +1,44 @@
+{% set route = app.request.attributes.get('_route') %}
+{% set slug = app.request.attributes.get('slug') %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}{{ render(controller('SiteFrontendBundle:Base:title'))|raw }}{% endblock %}</title>
+        {% block stylesheets %}
+            <link href="{{ asset('/bundles/site/css/bootstrap.min.css') }}" type="text/css" rel="stylesheet" />
+            <link rel="stylesheet" type="text/css" href="{{ asset('/bundles/site/js/highslide/highslide.css') }}" />
+            <link href="{{ asset('/bundles/site/css/site.css') }}" type="text/css" rel="stylesheet" />
+        {% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    </head>
+    <body class="container" id="main">
+        <header class="clearfix">{{ render(controller('SiteFrontendBundle:Base:header')) }}</header>
+        <nav class="clearfix">{{ render(controller('SiteFrontendBundle:Base:nav',{'route': route})) }}</nav>
+        <div id="wrapper" class="clearfix">
+            <div id="article"class="pull-left">
+                <article>
+                    {% block body %}{% endblock %}
+                </article>
+            </div>
+
+            <aside id="left-sidebar" class="pull-left">
+                {% block left_sidebar %}
+                    {% include 'SiteFrontendBundle:Block:day_photo.html.twig' %}
+                    {% include 'SiteFrontendBundle:Block:lenta_news.html.twig' with {'slug': slug} %}
+                {% endblock %}
+            </aside>
+            <aside id="right-sidebar" class="pull-right">
+                {% block right_sidebar %}3
+                {% endblock %}
+            </aside>
+        </div>
+        <footer>123</footer>
+        {% block javascripts %}
+            <script src="{{ asset('bundles/site/js/jquery.js') }}" type="text/javascript"></script>
+            <script src="{{ asset('bundles/site/js/bootstrap.min.js') }}" type="text/javascript"></script>
+            <script src="{{ asset('/bundles/site/js/highslide/highslide-full.min.js') }}" type="text/javascript"></script>
+            <script src="{{ asset('/bundles/site/js/highslide.config.js') }}" type="text/javascript"></script>
+        {% endblock %}
+    </body>
+</html>

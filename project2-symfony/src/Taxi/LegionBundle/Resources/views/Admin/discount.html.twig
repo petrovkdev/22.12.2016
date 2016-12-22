@@ -1,0 +1,58 @@
+{% extends 'TaxiLegionBundle::base.html.twig' %}
+
+{% block title %}Скидки{% endblock %}
+
+{% block nav %}
+    {{ knp_menu_render('TaxiLegionBundle:Builder:adminMenu',{'template': 'TaxiLegionBundle:Menu:knp_menu.html.twig'}) }}
+{% endblock %}
+
+{% block body %}
+    <div class="section-option">
+        <a href="{{ path('taxi_legion_discount_create') }}" class="btn btn-primary">
+            <span class="glyphicon glyphicon-plus-sign"></span> Создать скидку</a>
+    </div>
+    <div class="section-option">
+        <div class="panel panel-primary">
+            <div class="panel-heading">Список скидок <span class="label label-info app-label pull-right">{{ discount|length }}</span></div>
+            {% if discount %}
+                <table class="table table-striped">
+                    <tr>
+                        <th>#</th>
+                        <th>Название</th>
+                        <th>Действует на поездки</th>
+                        <th>Действует</th>
+                        <th>Размер скидки (%)</th>
+                        <th>Опции</th>
+                    </tr>
+                    {% for item in discount %}
+                        <tr>
+                            <td>{{ loop.index }}</td>
+                            <td>{{ item.name }}</td>
+                            <td>
+                                {% if item.travel %}
+                                    {{ item.travel }}
+                                {% else %}
+                                    на все поездки
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if item.abonent %}
+                                    для абонента - {{ item.abonent }} [+7{{ item.phone }}]
+                                {% else %}
+                                    для всех абонентов
+                                {% endif %}
+                            </td>
+                            <td>{{ item.discount }}%</td>
+                            <td><a href="{{ path('taxi_legion_discount_edit', {'id': item.id }) }}" class="btn btn-warning btn-sm">
+                                    <span class="glyphicon glyphicon-edit"></span> Редактировать</a></td>
+                        </tr>
+                    {% endfor %}
+                </table>
+            {% else %}
+                <div class="panel-body">
+                    <span>Нет скидок</span>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}Легион{% endblock %}</title>
+        {% block stylesheets %}
+            <link href="{{ asset('/css/bootstrap.min.css') }}" type="text/css" rel="stylesheet" />
+            <link href="{{ asset('/css/common.css') }}" type="text/css" rel="stylesheet" />
+        {% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    </head>
+    <body>
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    {% if app.request.attributes.get('_route') ==  'taxi_legion_homepage' %}
+                        <span class="navbar-brand">{{ 'logo.name'|trans({}, 'FOSUserBundle') }}</span>
+                    {% else %}
+                        <a class="navbar-brand" href="{{ path('taxi_legion_homepage') }}">{{ 'logo.name'|trans({}, 'FOSUserBundle') }}</a>
+                    {% endif %}
+                </div>
+                {% block nav %}{% endblock %}
+                <div class="pull-right">
+                    {{ knp_menu_render('TaxiLegionBundle:Builder:adminSysMenu',{'template': 'TaxiLegionBundle:Menu:knp_menu.html.twig'}) }}
+                </div>
+            </div><!-- /.container-fluid -->
+        </nav>
+        <div id="content" class="container-fluid">
+            {% block body %}{% endblock %}
+        </div>
+        {% block javascripts %}
+
+        {% endblock %}
+    </body>
+</html>

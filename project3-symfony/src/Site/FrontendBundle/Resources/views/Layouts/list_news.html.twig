@@ -1,0 +1,11 @@
+<div class="list-news">
+{% for item in news %}
+    {% if slug != item.slug %}
+        <section class="item">
+            <div class="date"><i class="glyphicon glyphicon-calendar"></i> {{ item.date|localizeddate('none', 'none', 'ru', null, 'dd MMMM Y')|replace_date }}</div>
+            <a href="{{ path('news_post', {'slug':item.slug}) }}" class="title link-underline">{{ item.title|raw }}</a>
+            <div class="content">{{ item.body|striptags|slice(0,150)|raw }}...</div>
+        </section>
+    {% endif %}
+{% endfor %}
+</div>

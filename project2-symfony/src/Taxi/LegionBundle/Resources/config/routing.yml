@@ -1,0 +1,152 @@
+taxi_legion_homepage:
+    path:     /
+    defaults: { _controller: TaxiLegionBundle:Admin:index }
+
+taxi_legion_users:
+    path:     /users
+    defaults: { _controller: TaxiLegionBundle:Admin:users }
+
+taxi_legion_users_create:
+    path:     /users/create
+    defaults: { _controller: TaxiLegionBundle:Admin:createuser }
+
+taxi_legion_user_edit:
+    path:     /users/edit/{id}
+    defaults: { _controller: TaxiLegionBundle:Admin:useredit }
+    requirements:
+      id: \d+
+
+taxi_legion_user_delete:
+    path:     /users/delete/{id}
+    defaults: { _controller: TaxiLegionBundle:Admin:userdelete }
+    requirements:
+      id: \d+
+
+taxi_legion_logbook:
+    path:     /logbook
+    defaults: { _controller: TaxiLegionBundle:Admin:logbook }
+
+taxi_legion_tariffs:
+    path:     /tariffs
+    defaults: { _controller: TaxiLegionBundle:Admin:tariffs }
+
+taxi_legion_tariff_create:
+    path:     /tariffs/create
+    defaults: { _controller: TaxiLegionBundle:Admin:tariffcreate }
+
+fos_user_security:
+    resource: "@FOSUserBundle/Resources/config/routing/security.xml"
+
+fos_user_profile:
+    resource: "@FOSUserBundle/Resources/config/routing/profile.xml"
+    prefix: /profile
+
+fos_user_change_password:
+    resource: "@FOSUserBundle/Resources/config/routing/change_password.xml"
+    prefix: /profile
+
+taxi_legion_tariff_edit:
+    path:     /tariffs/edit/{id}
+    defaults: { _controller: TaxiLegionBundle:Admin:tariffedit }
+    requirements:
+      id: \d+
+
+taxi_legion_tariff_delete:
+    path:     /tariffs/delete/{id}
+    defaults: { _controller: TaxiLegionBundle:Admin:tariffdelete }
+    requirements:
+      id: \d+
+
+taxi_legion_drivers:
+    path:     /drivers
+    defaults: { _controller: TaxiLegionBundle:Admin:drivers }
+
+taxi_legion_drivers_create:
+    path:     /drivers/create
+    defaults: { _controller: TaxiLegionBundle:Admin:driver_create }
+
+taxi_legion_drivers_edit:
+    path:     /drivers/edit/{id}
+    defaults: { _controller: TaxiLegionBundle:Admin:driver_edit }
+    requirements:
+          id: \d+
+
+taxi_legion_driver_delete:
+    path:     /drivers/delete/{id}
+    defaults: { _controller: TaxiLegionBundle:Admin:driver_delete }
+    requirements:
+      id: \d+
+
+taxi_legion_type_order:
+    path:     /type-order
+    defaults: { _controller: TaxiLegionBundle:Admin:type_order }
+
+taxi_legion_type_order_create:
+    path:     /type-order/create
+    defaults: { _controller: TaxiLegionBundle:Admin:type_order_create }
+
+taxi_legion_type_order_edit:
+    path:     /type-order/edit/{id}
+    defaults: { _controller: TaxiLegionBundle:Admin:type_order_edit }
+    requirements:
+             id: \d+
+
+taxi_legion_type_order_delete:
+    path:     /type-order/delete/{id}
+    defaults: { _controller: TaxiLegionBundle:Admin:type_order_delete }
+    requirements:
+      id: \d+
+
+taxi_legion_area:
+    path:     /area
+    defaults: { _controller: TaxiLegionBundle:Admin:area }
+
+taxi_legion_area_create:
+    path:     /area/create
+    defaults: { _controller: TaxiLegionBundle:Admin:area_create }
+
+taxi_legion_area_edit:
+    path:     /area/edit/{id}
+    defaults: { _controller: TaxiLegionBundle:Admin:area_edit }
+    requirements:
+          id: \d+
+
+taxi_legion_area_delete:
+    path:     /area/delete/{id}
+    defaults: { _controller: TaxiLegionBundle:Admin:area_delete }
+    requirements:
+      id: \d+
+
+taxi_legion_discount:
+    path:     /discount
+    defaults: { _controller: TaxiLegionBundle:Admin:discount }
+
+taxi_legion_discount_create:
+    path:     /discount/create
+    defaults: { _controller: TaxiLegionBundle:Admin:discount_create }
+
+taxi_legion_discount_edit:
+    path:     /discount/edit/{id}
+    defaults: { _controller: TaxiLegionBundle:Admin:discount_edit }
+    requirements:
+          id: \d+
+
+taxi_legion_discount_delete:
+    path:     /discount/delete/{id}
+    defaults: { _controller: TaxiLegionBundle:Admin:discount_delete }
+    requirements:
+      id: \d+
+
+taxi_legion_ajax:
+    path:  /ajax
+    defaults: { _controller: TaxiLegionBundle:Manager:ajax }
+    requirements:
+        _method:  POST
+
+taxi_legion_references:
+    path:     /references
+    defaults: { _controller: TaxiLegionBundle:Manager:references }
+
+taxi_legion_references_abonents:
+    path:     /references/abonents
+    defaults: { _controller: TaxiLegionBundle:Manager:abonents }

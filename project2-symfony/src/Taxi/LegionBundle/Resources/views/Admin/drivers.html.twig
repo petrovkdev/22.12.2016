@@ -1,0 +1,54 @@
+{% extends 'TaxiLegionBundle::base.html.twig' %}
+
+{% block title %}Водители{% endblock %}
+
+{% block nav %}
+    {{ knp_menu_render('TaxiLegionBundle:Builder:adminMenu',{'template': 'TaxiLegionBundle:Menu:knp_menu.html.twig'}) }}
+{% endblock %}
+
+{% block body %}
+    <div class="section-option">
+        <a href="{{ path('taxi_legion_drivers_create') }}" class="btn btn-primary">
+            <span class="glyphicon glyphicon-plus-sign"></span> Создать водителя</a>
+    </div>
+    <div class="section-option">
+        <div class="panel panel-primary">
+            <div class="panel-heading">Список водителей <span class="label label-info app-label pull-right">{{ drivers|length }}</span></div>
+            {% if drivers %}
+                <table class="table table-striped">
+                    <tr>
+                        <th>#</th>
+                        <th>ФИО водителя</th>
+                        <th>Позывной</th>
+                        <th>Регистрационный номер автомобиля</th>
+                        <th>Марка автомобиля</th>
+                        <th>Цвет автомобиля</th>
+                        <th>Телефон</th>
+                        <th>Адрес</th>
+                        <th>Дата добавления</th>
+                        <th>Опции</th>
+                    </tr>
+                    {% for item in drivers %}
+                        <tr>
+                            <td>{{ loop.index }}</td>
+                            <td>{{ item.name }}</td>
+                            <td>{{ item.driverCall }}</td>
+                            <td>{{ item.driverMachine }}</td>
+                            <td>{{ item.machineMarka }}</td>
+                            <td>{{ item.machineColor }}</td>
+                            <td>{{ item.phone }}</td>
+                            <td>{{ item.address }}</td>
+                            <td>{{ item.createDate|date('d.m.Y') }}</td>
+                            <td><a href="{{ path('taxi_legion_drivers_edit', {'id': item.id }) }}" class="btn btn-warning btn-sm">
+                                    <span class="glyphicon glyphicon-edit"></span> Редактировать</a></td>
+                        </tr>
+                    {% endfor %}
+                </table>
+            {% else %}
+                <div class="panel-body">
+                    <span>Нет водителей</span>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}
